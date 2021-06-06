@@ -13,7 +13,7 @@ public class CuratorTest {
     /**
      * 建立连接
      */
-    @Before
+    @Test
     public void testConnect() {
         //CuratorFramework是Java和zk建立连接的客户端对象
 
@@ -30,20 +30,20 @@ public class CuratorTest {
          */
         //  3秒一次重试，重试10次
         RetryPolicy retryPolicy = new ExponentialBackoffRetry(3000, 10);
-//        CuratorFramework client = CuratorFrameworkFactory.newClient("124.70.216.119:2181",
-//                60 * 1000, 15 * 1000, retryPolicy);
+        CuratorFramework client = CuratorFrameworkFactory.newClient("106.13.1.55:2181",
+                60 * 1000, 15 * 1000, retryPolicy);
 
         // 第2种方式创建CuratorFramework对象
-//                client = CuratorFrameworkFactory.builder().connectString("www.yaoan-learn.com:8070/zk").sessionTimeoutMs(60 * 1000)
-        client = CuratorFrameworkFactory.builder().connectString("124.70.216.119:2181")
-                .sessionTimeoutMs(60 * 1000)
-                .connectionTimeoutMs(15 * 1000)
-                .retryPolicy(retryPolicy)
-                .namespace("itheima") // 支持命名空间。将来JavaAPi做的所有操作，都会默认认为itheima是根目录
-                .build();
+//        client = CuratorFrameworkFactory.builder().connectString("106.13.1.55:2181")
+//                .sessionTimeoutMs(60 * 1000)
+//                .connectionTimeoutMs(15 * 1000)
+//                .retryPolicy(retryPolicy)
+//                .namespace("itheima") // 支持命名空间。将来JavaAPi做的所有操作，都会默认认为itheima是根目录
+//                .build();
 
         // 开启连接
         client.start();
+
     }
 
     /**
