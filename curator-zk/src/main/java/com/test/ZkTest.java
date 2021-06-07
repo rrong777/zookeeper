@@ -21,6 +21,7 @@ public class ZkTest {
         client.start();
         String path = null;
         try {
+            // 如果创建节点没有指定数据，则默认将当前客户端的ip作为数据存储
             path = client.create().forPath("/app1");
         } catch (Exception e) {
             e.printStackTrace();
